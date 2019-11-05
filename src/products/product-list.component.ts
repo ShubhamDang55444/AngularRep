@@ -72,3 +72,5 @@ export class ProductListComponent implements OnInit
         return this.products.filter((product:IProduct)=> product.productName.toLowerCase().indexOf(filterBy) !==-1);
     }
 }
+
+console.log("git");
