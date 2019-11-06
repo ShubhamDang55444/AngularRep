@@ -54,6 +54,17 @@ export class ProductListComponent implements OnInit
             "starRating": 4.2,
             "imageUrl": "assets/images/garden_cart.png"
           },
+
+          {
+            "productId": 3,
+            "productName": "Saw",
+            "productCode": "GDN-0034",
+            "releaseDate": "March 25, 2019",
+            "description": "15 gallon capacity rolling garden cart",
+            "price": 132.99,
+            "starRating": 1.5,
+            "imageUrl": "assets/images/saw.png"
+          }
     ];
 
     toggleImage():void
@@ -72,4 +83,4 @@ export class ProductListComponent implements OnInit
     }
 }
 
-console.log("git");
+
