@@ -13,7 +13,7 @@ export class ProductListComponent implements OnInit
       
     constructor() {
         this.filteredProducts=this.products;
-        this.listFilter=  'cart';
+        this.listFilter='';
 
     }
     pageTitle:string='Product List!!';
@@ -21,10 +21,10 @@ export class ProductListComponent implements OnInit
     imageMargin:Number=2;
     showImage: boolean=false;
     //listFiltered:string;
-    _listFilter:string;
-    filteredProducts:IProduct[];
+    _listFilter='';
+    filteredProducts:IProduct[]=[];
     public get listFilter() : string {
-        return this._listFilter
+        return this._listFilter;
     }
     
     public set listFilter(value:string) {
@@ -59,7 +59,7 @@ export class ProductListComponent implements OnInit
     toggleImage():void
      {
         this.showImage=!this.showImage;
-    }
+    } 
 
     ngOnInit():void
     {
@@ -68,8 +68,7 @@ export class ProductListComponent implements OnInit
 
     performFilter(filterBy: string): IProduct[] {
         filterBy= filterBy.toLowerCase()    
-
-        return this.products.filter((product:IProduct)=> product.productName.toLowerCase().indexOf(filterBy) !==-1);
+        return this.products.filter((product:IProduct)=> product.productName.toLowerCase().indexOf(filterBy) !== -1);
     }
 }
 
