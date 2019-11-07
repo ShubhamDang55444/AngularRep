@@ -50,7 +50,9 @@
                                          <!-- <td>{{product.description}}</td> -->
                                          <td>{{product.price | currency : 'INR':'symbol':'1.2-2' }}</td>
                                          <!-- <td>{{product.starRating | number}}</td> -->
-                                         <td><pm-star [rating]='product.starRating'></pm-star></td>
+                                         <td><pm-star [rating]='product.starRating'
+                                             (ratingClicked)= 'onRatingClicked($event)'>
+                                         </pm-star></td>
                                          <!-- <td>{{product.imageUrl}}</td> -->
                                      </tr>
                                  </tbody>       
