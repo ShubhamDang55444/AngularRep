@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from './product';
+import { ProductService } from './product.service';
 
 
 @Component({
@@ -10,10 +11,31 @@ import { IProduct } from './product';
 
 export class ProductListComponent implements OnInit
 {
-      
-    constructor() {
+    products: IProduct[]=[];
+    onRatingClicked(message:string):void
+    {
+        this.pageTitle = 'PList:' + message;
+    }
+
+    performFilter(filterBy: string): IProduct[] {
+        filterBy= filterBy.toLowerCase()    
+        return this.products.filter((product:IProduct)=> product.productName.toLowerCase().indexOf(filterBy) !== -1);
+    }
+    toggleImage():void
+    {
+        this.showImage=!this.showImage;
+    } 
+    ngOnInit(): void
+    {
+        this.products=  this.productService.getProducts();
         this.filteredProducts=this.products;
-        this.listFilter='';
+    }
+
+   
+    //  private _productService;
+    constructor(private productService: ProductService) {
+      
+       // this._productService=productService;
 
     }
     pageTitle:string='Product List!!';
@@ -33,60 +55,15 @@ export class ProductListComponent implements OnInit
     }
     
     
-    products: IProduct[]=[
-        {
-            "productId": 1,
-            "productName": "Leaf Rake",
-            "productCode": "GDN-0011",
-            "releaseDate": "March 19, 2019",
-            "description": "Leaf rake with 48-inch wooden handle.",
-            "price": 19.95,
-            "starRating": 3.2,
-            "imageUrl": "assets/images/leaf_rake.png"
-          },
-          {
-            "productId": 2,
-            "productName": "Garden Cart",
-            "productCode": "GDN-0023",
-            "releaseDate": "March 18, 2019",
-            "description": "15 gallon capacity rolling garden cart",
-            "price": 32.99,
-            "starRating": 4.2,
-            "imageUrl": "assets/images/garden_cart.png"
-          },
+   
 
-          {
-            "productId": 3,
-            "productName": "Saw",
-            "productCode": "GDN-0034",
-            "releaseDate": "March 25, 2019",
-            "description": "15 gallon capacity rolling garden cart",
-            "price": 132.99,
-            "starRating": 1.5,
-            "imageUrl": "assets/images/saw.png"
-          }
-    ];
+    
 
-    toggleImage():void
-     {
-        this.showImage=!this.showImage;
-    } 
-
-    ngOnInit():void
-    {
-        console.log("hi");
-    }
-
-    performFilter(filterBy: string): IProduct[] {
-        filterBy= filterBy.toLowerCase()    
-        return this.products.filter((product:IProduct)=> product.productName.toLowerCase().indexOf(filterBy) !== -1);
-    }
+    
+   
 
 
-    onRatingClicked(message:string):void
-        {
-            this.pageTitle = 'PList:' + message;
-        }
+   
     
 }
 
