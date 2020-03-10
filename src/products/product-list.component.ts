@@ -55,7 +55,7 @@ export class ProductListComponent implements OnInit
     }
     
     
-   
+
 
     
 
@@ -66,5 +66,8 @@ export class ProductListComponent implements OnInit
    
     
 }
+
+
+   
 
 
